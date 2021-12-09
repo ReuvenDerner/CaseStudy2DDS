@@ -464,6 +464,15 @@ summary(fit.sal)
 ols_regress(MonthlyIncome~TotalWorkingYears+JobLevel+JobRole, data=attr)
 c(RMSE = 1062.757, R2=summary(fit.sal)$r.squared)
 ```
+Model Diagnostics
+```{r}
+ols_plot_diagnostics(fit.sal) # all diagnostic plots
+ols_plot_cooksd_chart(fit.sal) # cooks d
+ols_plot_comp_plus_resid(fit.sal)
+ols_plot_obs_fit(fit.sal) # actual vs fitted values
+ols_plot_resid_fit(fit.sal) # residual vs fitted values
+ols_plot_added_variable(fit.sal) # partial residuals / added variable
+```
 2. Validate the model with 70/30 train/test split
 ```{r}
 model <- sample(1:nrow(attr), round(.7*nrow(attr)))
