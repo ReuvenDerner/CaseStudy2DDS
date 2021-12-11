@@ -472,6 +472,10 @@ ols_plot_comp_plus_resid(fit.sal)
 ols_plot_obs_fit(fit.sal) # actual vs fitted values
 ols_plot_resid_fit(fit.sal) # residual vs fitted values
 ols_plot_added_variable(fit.sal) # partial residuals / added variable
+
+attr$JobLevel <- as.factor(attr$JobLevel)
+attr$JobRole <- relevel(attr$JobRole, ref='Manufacturing Director')
+fit.sal <- lm(MonthlyIncome~TotalWorkingYears+JobLevel+JobRole, data=attr)
 ```
 2. Validate the model with 70/30 train/test split
 ```{r}
